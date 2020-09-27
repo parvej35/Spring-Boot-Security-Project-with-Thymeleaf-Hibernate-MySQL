@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration and Login App</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+</head>
+<body>
+	
+	
+	<div th:replace="menu.html"></div>
+
+	<br>
+	<br>
+	
+	<div class="container">
+		<div class="row">
+		    <div class="col-md-12" style="text-align:center;padding:30px;">
+		      <h1>Travel Blog</h1>
+		    </div>
+		</div>    
+		<div class="row">
+			<div class="col-md-4" th:if="${customFeedbackList.size() > 0}" th:each="customFeedback : ${customFeedbackList}">
+		      <div class="panel panel-primary">
+				  <div class="panel-heading"><h4 th:text="${customFeedback.username}"></h3></div>
+				  <div class="panel-body"><p th:text="${customFeedback.status}"></p></div>
+				  <div class="panel-footer"><p th:text="${customFeedback.location}"></p></div>
+			  </div>
+		    </div>
+		    
+		    <div class="col-md-4 col-md-offset-4" th:if="${customFeedbackList.size() == 0}">
+		      <div class="panel panel-default">
+				  <div class="panel-body">No Post Found</div>
+			  </div>
+			  
+			  <div class="col-md-12">
+				<div class="form-group">
+					<span>Add a post? <a href="/" th:href="@{/feedback}">Here</a></span>
+				</div>
+			  </div>	
+		    </div>
+		</div>
+	</div>
+</body>
+</html>

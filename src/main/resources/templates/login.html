@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<title>Login</title>
+
+<style>
+.title{position:relative;margin-bottom:25px;margin-top:15px;border-bottom:1px solid #DADADA;}
+.title:after{content:"";position:absolute;left:0;bottom:-1.5px;height:3px;width:60px;background-color:#F8694A;}
+</style>
+</head>
+<body>
+
+	<div th:replace="menu.html"></div>
+
+	<br>
+	<br>
+	
+	
+	<div class="container" style="padding-top:40px;">
+
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3" style="padding: 20px; box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border-top:4px solid LightCoral;border-radius:5px;">
+				<h3 class="title">Login</h3>
+				<form th:action="@{/login}" method="post">
+					
+					<div class="col-md-12">	
+						<div class="form-group">
+							<label for="username">Username</label>: <input type="text"
+								id="username" name="username" class="form-control"
+								placeholder="Username" value="parvej35@gmail.com" required />
+						</div>
+					</div>	
+					<div class="col-md-12">	
+						<div class="form-group">
+							<label for="password">Password</label>: <input type="password"
+								id="password" name="password" class="form-control"
+								placeholder="Password" value="12345" required />
+						</div>
+					</div>	
+					<div class="col-md-6">	
+						<div class="form-group">
+							<input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-primary" value="Log In" />
+						</div>
+					</div>
+					
+					<div class="col-md-6">
+						<div class="form-group">
+							<span>New user? <a href="/" th:href="@{/registration}">Signup here</a></span>
+						</div>
+					</div>	
+					
+					<div class="col-md-12">
+						<div th:if="${param.error}">
+							<div class="alert alert-danger">Invalid username or password.</div>
+						</div>
+					</div>	
+				</form>
+			</div>
+		</div>
+
+
+	</div>
+
+</body>
+</html>

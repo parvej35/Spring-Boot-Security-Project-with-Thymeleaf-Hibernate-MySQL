@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<title>Signup</title>
+
+<style>
+.title{position:relative;margin-bottom:25px;margin-top:15px;border-bottom:1px solid #DADADA;}
+.title:after{content:"";position:absolute;left:0;bottom:-1.5px;height:3px;width:60px;background-color:#F8694A;}
+</style>
+
+</head>
+<body>
+	<div th:replace="menu.html"></div>
+
+	<br>
+	<br>
+
+	<div class="container" style="padding-top:40px;">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3" style="padding: 20px; box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border-top:4px solid LightCoral;border-radius:5px;">
+				<h3 class="title">Signup</h3>
+
+				<form th:action="@{/registration}" th:object="${user}" method="post">					
+					<div class="col-md-12">	
+						<div class="form-group">
+							<label for="fullname" class="control-label">Full Name</label>
+							<input id="fullname" class="form-control" th:field="*{fullname}" />
+						</div>
+					</div>	
+					<div class="col-md-12">	
+						<div class="form-group">
+							<label for="email" class="control-label">E-mail</label> 
+							<input id="email" class="form-control" th:field="*{email}" />
+						</div>
+					</div>	
+						
+					<div class="col-md-6">	
+						<div class="form-group">
+							<label for="password" class="control-label">Password</label> 
+							<input id="password" class="form-control" type="password" th:field="*{password}" />
+						</div>
+					</div>	
+					
+					<div class="col-md-6">	
+						<div class="form-group">
+							<label for="repassword" class="control-label">Re Password</label> 
+							<input id="repassword" class="form-control" type="password" th:field="*{repassword}" />
+						</div>
+					</div>
+					
+					
+					<div class="col-md-6">	
+						<div class="form-group">
+							<button type="submit" class="btn btn-success">Register</button>
+						</div>
+					</div>
+					
+					<div class="col-md-6">	
+						<div class="form-group">
+							<span>Already registered? <a href="/" th:href="@{/login}">Login here</a></span>
+						</div>
+					</div>
+					
+					<div class="col-md-12">	
+						<div class="form-group">
+							<p class="alert alert-danger" th:if="${param.error != null}" th:text="${param.m}"></p>
+						</div>
+					</div>
+					<div class="col-md-12">	
+						<div class="form-group">
+							<p class="alert alert-success" th:if="${param.success != null}" th:text="${param.m}"></p>
+						</div>
+					</div>	
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

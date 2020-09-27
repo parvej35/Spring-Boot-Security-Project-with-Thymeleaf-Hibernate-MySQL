@@ -1,0 +1,20 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#" th:href="@{/}">Travel Blog</a>
+    </div>
+    
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#" th:href="@{/}">Home</a></li>
+      <li sec:authorize="isAuthenticated()"><a th:href="@{/feedback/list}">Feedback List</a></li>
+	  <li sec:authorize="isAuthenticated()"><a th:href="@{/feedback}">Add Feedback</a></li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"> <span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      
+      <li sec:authorize="isAnonymous()"><a th:href="@{/login}"> <span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li sec:authorize="isAnonymous()"><a th:href="@{/registration}"> <span class="glyphicon glyphicon-log-in"></span> Sign Up</a></li>
+    </ul>
+  </div>
+</nav>
