@@ -79,7 +79,11 @@ public class FeedbackController {
     	
     	if (user == null){
     		return "redirect:/login";
-    	} else {    	
+    	} else {  
+    		
+    		if(feedbackDto.getStatus().length() > 250) {
+    			feedbackDto.setStatus(feedbackDto.getStatus().substring(0, 250));
+    		}	
     		
     		feedbackDto.setUserId(user.getId());
     		
